@@ -11,8 +11,8 @@ SpringMVC就是一个spring，spring是容器，ioc能够管理对象，使用<b
 
     使用@Controller注解创建的是一个普通类的对象，不是servlet，springmvc赋予了控制器对象的一些额外的功能
 
-    web开发底层是servlet，springmvc中有一个对象是Servlet ：DispatherServlet（中央调度器）
-    DispatherServlet：负责接收用户的所有请求，用户把请求给了DispatherServlet，之后DispatherServlet把请求转发给
+    web开发底层是servlet，springmvc中有一个对象是Servlet ：DispatcherServlet（中央调度器）
+    DispatcherServlet：负责接收用户的所有请求，用户把请求给了DispatcherServlet，之后DispatcherServlet把请求转发给
                      Controller对象，最后是Controller对象处理请求
 
 
