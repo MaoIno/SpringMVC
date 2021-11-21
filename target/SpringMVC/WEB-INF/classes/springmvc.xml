@@ -2,6 +2,18 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd">
+    <!--组件扫描器，扫描目标目录下的所有带有创建对象标签的类，为其创建出对象，存放在springmvc容器中-->
     <context:component-scan base-package="com.Test1.controller"/>
+    <!--声明springmvc框架中的视图解析器，可以设置视图文件的路径-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--前缀：视图文件的路径-->
+        <property name="prefix" value="/WEB-INF/value/"/>
+
+        <!--后缀：视图文件的扩展名-->
+        <property name="suffix" value=".jsp"/>
+    </bean>
 </beans>

@@ -1,18 +1,31 @@
-SpringMVC：是基于spring的一个框架，实际上就是spring的一个模块，专门做web开发的
-            可以理解为servlet的一个升级版
+第一章：
+    SpringMVC：是基于spring的一个框架，实际上就是spring的一个模块，专门做web开发的
+                可以理解为servlet的一个升级版
 
-            web开发底层是servlet，框架是在servlet基础上加了一些功能，使得开发更加方便
+                web开发底层是servlet，框架是在servlet基础上加了一些功能，使得开发更加方便
 
-SpringMVC就是一个spring，spring是容器，ioc能够管理对象，使用<bean> @Component @Repository @Service @Controller
-    SpringMVC能够创建对象，加入到容器中（SpringMVC容器中）springmvc容器中放的是控制器对象
+    SpringMVC就是一个spring，spring是容器，ioc能够管理对象，使用<bean> @Component @Repository @Service @Controller
+        SpringMVC能够创建对象，加入到容器中（SpringMVC容器中）springmvc容器中放的是控制器对象
 
-    我们要做的就是使用@Component创建控制器对象，吧对象放到springmvc容器中，吧创建的对象作为控制器使用
-    这个控制器对象能接受用户的请求，显示处理结果，就当作是一个servlet使用。
+        我们要做的就是使用@Component创建控制器对象，吧对象放到springmvc容器中，吧创建的对象作为控制器使用
+        这个控制器对象能接受用户的请求，显示处理结果，就当作是一个servlet使用。
 
-    使用@Controller注解创建的是一个普通类的对象，不是servlet，springmvc赋予了控制器对象的一些额外的功能
+        使用@Controller注解创建的是一个普通类的对象，不是servlet，springmvc赋予了控制器对象的一些额外的功能
 
-    web开发底层是servlet，springmvc中有一个对象是Servlet ：DispatcherServlet（中央调度器）
-    DispatcherServlet：负责接收用户的所有请求，用户把请求给了DispatcherServlet，之后DispatcherServlet把请求转发给
-                     Controller对象，最后是Controller对象处理请求
+        web开发底层是servlet，springmvc中有一个对象是Servlet ：DispatcherServlet（中央调度器）
+        DispatcherServlet：负责接收用户的所有请求，用户把请求给了DispatcherServlet，之后DispatcherServlet把请求转发给
+                         Controller对象，最后是Controller对象处理请求
+
+
+
+    springmvc请求的处理流程：
+        1、发起some.do
+        2、tomcat服务器根据xml文件知道*.do对应dosome()方法
+        3、Dispatch Servlet把some.do转发给MyController.dosome(）方法
+        4、框架执行dosome（），把得到ModelAndView进行处理，转发到show.jsp文件
+    上面的过程可以简化为： some.do------>DispatchServlet----->MyController
+
+第二章：SpringMVC注解式开发
+
 
 

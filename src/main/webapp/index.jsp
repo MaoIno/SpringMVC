@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-    <p><a href="some.do"> 发起一个请求,来调用方法 </a></p>
+    <p><a href="some.do"> 发起一个请求,来调用方法</a></p>
 </body>
 </html>

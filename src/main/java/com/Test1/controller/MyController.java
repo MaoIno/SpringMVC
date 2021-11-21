@@ -39,7 +39,13 @@ public class MyController {
         mv.addObject("fun","执行函数");
         //指定视图，指定视图的完整路径
         //框架对视图执行的forword操作
-        mv.setViewName("/show.jsp");
+        //mv.setViewName("/show.jsp");
+        //如果要访问web-inf目录下的加密文件，需要指定多重目录，如果很多的文件都在不同的目录下，就需要多次填写
+        //例如：mv.setViewName("/WEB-INF/show.jsp");
+        //例如：mv.setViewName("/WEB-INF/MAIN/show.jsp");
+        //例如：mv.setViewName("/WEB-INF/MAIN/other.jsp");
+        //使用视图解析器，可以使用逻辑名称（文件名）指定视图,框架会使用视图解析器的前缀+逻辑名称+后缀 ，组成完整的路径 ， 就是字符串的链接操作
+        mv.setViewName("show");
         return mv;
     }
 }
