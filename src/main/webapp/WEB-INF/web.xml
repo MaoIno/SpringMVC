@@ -3,5 +3,38 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+    <!--
+        声明：注册springmvc的核心对象DispatchServlet
+        需要在tomcat服务器启动后，创建它的对象实例
+        为什么要创建它的对象实例呢？
+            因为在它的创建过程中，会同时创建springmvc的容器对象，
+            读取springmvc的配置文件，把这个配置文件的对象都创建好，当用户
+            发送请求的时候，就可以直接使用了
+        直接启动会报错，因为没有读取到配置文件
+        默认路径在INF，通常是自定义文件路径
+    -->
+    <servlet>
+        <servlet-name>springmvc</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!--在tomcat启动后，创建servlet对象
+            表示tomcat启动后，创建对象的顺序，它的值是整数，数值越小，创建的时间越早，大于等于0
+        -->
+        <!--自定义springmvc读取的配置文件的路径-->
+        <init-param>
+            <!--springmvc的配置文件的位置属性-->
+            <param-name>contextConfigLocation</param-name>
+            <!--指定自定义的位置-->
+            <param-value>classpath:springmvc.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <!--使用框架的时候,url-pattern有两种值：
+            1、使用拓展名的方式：语法 *.xxx 后面是自定义的拓展名 ， 常用的采取 *.do  *.action  *.mvc等到
 
+            2、使用"/"，使用斜杠
+        -->
+        <servlet-name>springmvc</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
 </web-app>
