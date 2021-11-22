@@ -26,6 +26,19 @@
     上面的过程可以简化为： some.do------>DispatchServlet----->MyController
 
 第二章：SpringMVC注解式开发
+        1、@RequestMethod:指定Controller中的方法请求的类型，get或者是post
+
+    处理方法的参数：
+        1、处理器方法包含四类参数，这些参数会在系统调用的时候，由系统自动赋值
+            @HttpServletRequest
+                请求对象
+            @HttpServletResponse
+                响应对象
+            @HttpSession
+                会话对象
+            请求中所携带的请求参数（用户提交的数据）
+                1、逐个接收
+                2、对象接收
 
 
 

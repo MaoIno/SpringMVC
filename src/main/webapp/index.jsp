@@ -11,6 +11,14 @@
     <title>Title</title>
 </head>
 <body>
-    <p><a href="some.do"> 发起一个请求,来调用方法</a></p>
+    <%--<p><a href="test/some.do" > 发起一个请求,来调用方法</a></p>
+    <form action="test/other.do" method="post">
+        <input type="submit" value="max" />
+    </form>--%>
+    <form action="some.do" method="post">
+        name:<input type="text" name="rname" /><br>
+        age:<input type="text" name="rage" /><br>
+        <input type="submit" value="max" />
+    </form>
 </body>
 </html>
