@@ -9,6 +9,26 @@
 <html>
 <head>
     <title>Title</title>
+
+<script type="text/javascript" src=""></script>
+<script type="text/javascript">
+    $(function(){
+        $("button").click(function(){
+            $.ajax({
+                url:"some.do",
+                data:{
+                    name:"zhangsan",
+                    age:20
+                },
+                type:"post",
+                //dataType:"json",
+                success:function(resp){
+                  alert(resp)
+                }
+            })
+        })
+    })
+</script>
 </head>
 <body>
     <%--<p><a href="test/some.do" > 发起一个请求,来调用方法</a></p>
@@ -18,7 +38,8 @@
     <form action="some.do" method="post">
         name:<input type="text" name="rname" /><br>
         age:<input type="text" name="rage" /><br>
-        <input type="submit" value="max" />
+        <button type="submit" value="max" />
     </form>
+    <%--<button type="submit" value="a"/>--%>
 </body>
 </html>
