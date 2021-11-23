@@ -5,11 +5,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author MaoIno
@@ -124,7 +127,7 @@ public class MyController {
      *  其中的值是利用对象中的set方法赋值，以及get来获得值
      *  处理器形参列表中的对象的属性名和请求的参数名一致
      *  框架会创建形参的Java对象，给属性赋值，请求中的参数是name，框架会调用setName方法将请求中的值赋值给对象中的属性
-     * */
+     * *//*
     @RequestMapping(value="/some.do")
     public ModelAndView doSome(Student mystudent){
         ModelAndView mv = new ModelAndView();
@@ -132,5 +135,45 @@ public class MyController {
         mv.addObject("age",mystudent.getRage());
         mv.setViewName("show");
         return mv;
+    }*/
+    /**
+     * 处理方法返回一个Student对象，通过框架转换为json，来响应ajax
+     * @ResponseBody:
+     *          作用：把处理器方法返回对象转为json后，通过HttpServletResponse输出到浏览器中
+     *          位置：定义在方法的上面，和其他的注解没有先后顺序关系
+     * 返回对象框架的处理流程：
+     *      1、框架会吧返回的student类型，调用框架的arraylist<HttpMessageConverter>中的每个类的canwrite（）方法
+     *      检查接口的实现类能处理student类型的对象
+     *      2、框架调用实现类write（），将返回值转换为json，调用jackson时间json
+     *      3、框架嗲用ResponseBody将结果数据输出到浏览器，ajax请求处理完成
+     *
+     * */
+   /* @ResponseBody
+    @RequestMapping(value="/some.do")
+    public Student doSome(Student mystudent){
+        //调用servlet ， 获取请求结果数据，Student对象表示结果数据
+        Student student = new Student();
+        student.setRname("李四");
+        student.setRage(20);
+        return student; //会被框架转换为json
+    }*/
+    /*使用输出做返回值*/
+    /*@ResponseBody
+    @RequestMapping(value="/some.do")
+    public List<Student> doSome(Student mystudent){
+        //调用servlet ， 获取请求结果数据，Student对象表示结果数据
+        Student student = new Student();
+        student.setRname("李四");
+        student.setRage(20);
+        List<Student> list = new ArrayList<>();
+        list.add(student);
+        return list; //会被框架转换为json
+    }*/
+    //确认返回值是String的类型的是数据还是视图就是看是否有ResponseBody，如果有是数据，没有就是视图
+    @ResponseBody
+    @RequestMapping(value="/some.do")
+    public String doSome(){
+
+        return "lsi";
     }
 }
